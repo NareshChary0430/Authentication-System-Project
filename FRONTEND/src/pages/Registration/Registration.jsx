@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './Registration.css'
 import { useState } from 'react';
-// import axiosClient from '../../utils/axiosClient';
+import axiosClient from '../../utils/axiosClient';
 
 export default function Signup() {
     const [userDetails, setUserDetails] = useState({
@@ -21,11 +21,9 @@ export default function Signup() {
 
 
     async function submitUserDetails() {
-        // let response=await axiosClient.post('/register-new-user',userDetails);
-        console.log(userDetails);
-        
-       
+        let response=await axiosClient.post('/register-new-user',userDetails);
     }
+    
     return <div className='d-flex' style={{ height: '100vh' }}>
         <div className="signup-left-half w-50" style={{ maxHeight: '100%', overflow: 'hidden' }}>
             <img src="/auth-cover.jpg" alt="authentication cover" style={{ width: '100%' }} />
