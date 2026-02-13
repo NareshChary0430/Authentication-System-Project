@@ -1,10 +1,12 @@
-import React from 'react'
-import Signup from "./pages/Registration/Registration"
-const App = () => {
+import './App.css'
+import Signup from './pages/Registration/Registration'
+
+function App() {
+
   return (
-    <div>
-     <Signup/>
-    </div>
+    <>
+      <Signup />
+    </>
   )
 }
 
