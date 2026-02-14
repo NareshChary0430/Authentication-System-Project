@@ -13,6 +13,22 @@ app.get('/',(req,res)=>{
     res.send("Hello World");
 });
 
+app.post("/user-login",async (req,res)=>{
+    let {email,password}=req.body;
+    const user = await pool.query(`select * from users where email='${email}'`);
+    const userHash = user[0][0].passwordHash;
+    let isPasswordValid = await bcrypt.compare(password,userHash);
+    if(isPasswordValid){
+        res.status(200).json({message:"Login successful"});
+    }else{
+        res.status(401).json({message:"Invalid credentials"});
+    }
+}); 
+
+
+
+
+
 app.post("/register-new-user",async (req,res)=>{
     let {name,email,password}=req.body;
     //hash the password
